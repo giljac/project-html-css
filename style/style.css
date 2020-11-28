@@ -74,6 +74,20 @@ body {
   padding-left: 0px;
 }
 
+/**** hero ****/
+.page-hero {
+  height: 270px;
+  background-color: var(--color_bckg_2);
+  /* background-image: url(""); */
+  border: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+}
+.page-hero h2 {
+  margin: auto;
+  font-size: 64px;
+}
+
 /**** mobile ****/
 @media screen and (max-width: 540px) {
   .right-nav {
