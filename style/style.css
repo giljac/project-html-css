@@ -8,6 +8,7 @@
 
   /* values*/
   --pad_main: 50px;
+  --marg_post: 10px;
 }
 
 /* reset */
@@ -19,8 +20,6 @@
 
 html,
 body {
-  width: 100%;
-  height: 100%;
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   line-height: 1.2em;
@@ -58,6 +57,7 @@ body {
 
 .left-title {
   font-size: 28px;
+  font-weight: 700;
 }
 
 .right-nav {
@@ -66,6 +66,7 @@ body {
   list-style-type: none;
   padding-right: 26px;
 }
+
 .right-menu {
   padding-right: 10px;
   display: none;
@@ -93,17 +94,12 @@ body {
   font-size: 64px;
 }
 
-/**** hr ****/
-.page-hr {
-  height: 1em;
-  background-color: #ffffff;
-}
-
 /**** tabs ****/
 .page-tabs {
   display: flex;
   justify-content: space-between;
   padding: 0 var(--pad_main);
+  margin-top: 1em;
 }
 .page-tabs ul {
   display: flex;
@@ -126,6 +122,63 @@ body {
   margin: auto;
   text-decoration: none;
   color: #000;
+  font-weight: 700;
+}
+
+/**** posts ****/
+.page-posts {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 calc(var(--pad_main) - var(--marg_post));
+  background-color: var(--color_bckg_1);
+}
+.post {
+  width: fit-content;
+  margin: 0 var(--marg_post);
+  background-color: var(--color_bckg_1);
+}
+
+.post-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 5px;
+  width: 100v;
+}
+
+.post img {
+  min-width: 240px;
+  max-width: 240px;
+  min-height: 100px;
+  height: auto;
+  border: 1px solid #ffffff;
+  background-color: var(--color_bckg_img);
+}
+
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.footer-username {
+  margin: 0 8px;
+  cursor: default;
+}
+
+.post-footer-buttons button {
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  background-color: var(--color_bckg_img);
+  border: 1px solid #ffffff;
+  visibility: hidden;
+}
+
+.post-footer:hover button {
+  visibility: visible;
 }
 
 /**** mobile ****/
@@ -138,5 +191,19 @@ body {
   }
   .page-tabs {
     display: none;
+  }
+  .page-posts {
+    padding: 0;
+    padding-bottom: 1em;
+    width: 100%;
+    background-color: #fff;
+  }
+  .post {
+    width: 100vw;
+    margin: 1em 0 0 0;
+  }
+  .post img {
+    width: 100%;
+    max-width: unset;
   }
 }
