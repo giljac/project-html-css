@@ -2,13 +2,12 @@
 :root {
   /* colors */
   --color_bckg_1: #c4c4c4;
-  --color_bckg_img: #dd3a3a;
   --color_bckg_tab: #e5e5e5;
   --color_bckg_tab_select: #99b2e2;
 
   /* values*/
   --pad_main: 50px;
-  --marg_post: 10px;
+  --marg_post: 5px;
 }
 
 /* reset */
@@ -23,15 +22,12 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   line-height: 1.2em;
-}
-
-.page {
   max-width: 1280px;
   margin: 0 auto;
 }
 
 /**** header ****/
-.page-header {
+.header {
   background-color: var(--color_bckg_1);
   display: flex;
   justify-content: space-between;
@@ -40,184 +36,182 @@ body {
   font-size: 18px;
 }
 
-.page-header-left,
-.page-header-right {
+.header__left,
+.header__right {
   display: flex;
   align-items: center;
   margin: auto 0;
 }
 
-.left-logo {
+.logo {
   width: 40px;
   height: 40px;
   margin: 10px 15px 10px 11px;
-  background-color: #99b2e2;
+  background-color: #459ce2;
   border: 1px solid #ffffff;
 }
 
-.left-title {
+.title {
   font-size: 28px;
   font-weight: 700;
 }
 
-.right-nav {
+.menu {
+  padding-right: 10px;
+  display: none;
+}
+
+.nav {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
   padding-right: 26px;
 }
 
-.right-menu {
-  padding-right: 10px;
-  display: none;
-}
-
-.right-nav li {
+.nav li {
   padding-left: 40px;
 }
 
-.right-nav li:first-child {
+.nav li:first-child {
   padding-left: 0px;
 }
 
 /**** hero ****/
-.page-hero {
+.hero {
   height: 270px;
-  background-image: url(/images/hero.jpg);
+  background-image: url("../images/hero.jpg");
   background-position: center;
   border: 1px solid #ffffff;
   display: flex;
-  align-items: center;
 }
-.page-hero h2 {
+
+.hero h2 {
   margin: auto;
   font-size: 64px;
 }
 
 /**** tabs ****/
-.page-tabs {
+.nav-tabs {
   display: flex;
   justify-content: space-between;
   padding: 0 var(--pad_main);
   margin-top: 1em;
 }
-.page-tabs ul {
+
+.nav-tabs ul {
   display: flex;
   background-color: var(--color_bckg_tab);
 }
-.page-tabs .tabs-left li:first-child {
-  background-color: var(--color_bckg_tab_select);
-}
-.page-tabs li {
+
+.nav-tabs li {
   display: flex;
   height: 50px;
   width: 87px;
 }
 
-.page-tabs li:not(:last-child) {
-  border-right: 1px solid #000;
-}
-
-.page-tabs a {
+.nav-tabs a {
   margin: auto;
   text-decoration: none;
   color: #000;
   font-weight: 700;
 }
 
+.nav-tabs li:not(:last-child) {
+  border-right: 1px solid #000;
+}
+
+.nav-tabs__left li:first-child {
+  background-color: var(--color_bckg_tab_select);
+}
+
 /**** posts ****/
-.page-posts {
-  width: 100%;
+.main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 calc(var(--pad_main) - var(--marg_post));
   background-color: var(--color_bckg_1);
 }
+
 .post {
-  width: fit-content;
+  width: 240px;
   margin: 0 var(--marg_post);
   background-color: var(--color_bckg_1);
 }
 
-.post-title {
+.post__title {
   font-size: 20px;
   font-weight: 700;
   margin: 5px;
-  width: 100v;
 }
 
 .post img {
-  min-width: 240px;
-  max-width: 240px;
-  min-height: 100px;
+  width: 100%;
   height: auto;
   border: 1px solid #ffffff;
-  background-color: var(--color_bckg_img);
 }
 
-.post-footer {
+.post__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
 }
 
-.footer-username {
+.post__footer .username {
   margin: 0 8px;
   cursor: default;
 }
 
-.post-footer-buttons button {
+.post__footer button {
   width: 32px;
   height: 32px;
   margin: 4px;
-  background-color: #ffffff;
   background-position: center;
   background-repeat: no-repeat;
   border: 1px solid #ffffff;
   visibility: hidden;
 }
 
-.post-footer-buttons button:nth-child(1) {
-  background-image: url(/images/link.png);
+.post__footer button:nth-child(1) {
+  background-image: url(../images/link.png);
 }
 
-.post-footer-buttons button:nth-child(2) {
-  background-image: url(/images/twit.png);
+.post__footer button:nth-child(2) {
+  background-image: url(../images/twit.png);
 }
 
-.post-footer-buttons button:nth-child(3) {
-  background-image: url(/images/face.png);
+.post__footer button:nth-child(3) {
+  background-image: url(../images/face.png);
 }
 
-.post-footer:hover button {
+.post:hover button {
   visibility: visible;
 }
 
 /**** mobile ****/
-@media screen and (max-width: 560px) {
-  .right-nav {
+@media screen and (max-width: 610px) {
+  .header__right .nav {
     display: none;
   }
-  .right-menu {
+
+  .header__right .menu {
     display: initial;
   }
-  .page-tabs {
+
+  .nav-tabs {
     display: none;
   }
-  .page-posts {
+
+  .main {
     padding: 0;
     padding-bottom: 1em;
     width: 100%;
     background-color: #fff;
   }
+
   .post {
     width: 100vw;
     margin: 1em 0 0 0;
-  }
-  .post img {
-    width: 100%;
-    max-width: unset;
   }
 }
