@@ -48,7 +48,7 @@ body {
   height: 40px;
   margin: 10px 15px 10px 11px;
   background-color: #459ce2;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
 }
 
 .title {
@@ -81,7 +81,7 @@ body {
   height: 270px;
   background-image: url("../images/hero.jpg");
   background-position: center;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   display: flex;
 }
 
@@ -148,7 +148,7 @@ body {
 .post img {
   width: 100%;
   height: auto;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
 }
 
 .post__footer {
@@ -169,24 +169,30 @@ body {
   margin: 4px;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid #ffffff;
+  background-size: contain;
+  border: 1px solid #fff;
   visibility: hidden;
 }
 
 .post__footer button:nth-child(1) {
-  background-image: url(../images/link.png);
+  background-image: url(../images/logo_in.svg);
 }
 
 .post__footer button:nth-child(2) {
-  background-image: url(../images/twit.png);
+  background-image: url(../images/logo_bird.svg);
 }
 
 .post__footer button:nth-child(3) {
-  background-image: url(../images/face.png);
+  background-image: url(../images/logo_face.svg);
 }
 
 .post:hover button {
   visibility: visible;
+}
+
+button:active{
+  transform: scale(0.9, 0.9);
+  box-shadow: inset 1px 1px #333;
 }
 
 /**** mobile ****/
