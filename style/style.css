@@ -9,8 +9,9 @@
   --color-shadow: #333;
 
   /* values*/
-  --pad_main: 50px;
-  --marg_post: 5px;
+  --pad-main: 50px;
+  --marg-post: 5px;
+  --post-width: 240px;
 }
 
 /* reset */
@@ -100,7 +101,7 @@ body {
 .nav-tabs {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--pad_main);
+  padding: 0 var(--pad-main);
   margin-top: 1em;
 }
 
@@ -132,16 +133,18 @@ body {
 
 /**** posts ****/
 .main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 calc(var(--pad_main) - var(--marg_post));
   background-color: var(--color-bckg_main);
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, var(--post-width));
+  justify-content: space-between;
+  padding: 0 40px 40px 40px;
+}
+
 .post {
-  width: 240px;
-  margin: 0 var(--marg_post);
+  width: var(--post-width);
   background-color: var(--color-bckg_main);
 }
 
@@ -201,8 +204,21 @@ button:active {
   box-shadow: inset 1px 1px var(--color-shadow);
 }
 
-/**** mobile ****/
+/****************** mobile *******************/
+@media screen and (max-width: 1070px) {
+  .wrapper {
+    grid-template-columns: repeat(3, var(--post-width));
+  }
+}
+@media screen and (max-width: 830px) {
+  .wrapper {
+    grid-template-columns: repeat(2, var(--post-width));
+  }
+}
 @media screen and (max-width: 610px) {
+  .wrapper {
+    grid-template-columns: repeat(1, var(--post-width));
+  }
   .header__right {
     display: initial;
   }
