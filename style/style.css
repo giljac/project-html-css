@@ -7,11 +7,16 @@
   --color-white: #fff;
   --color-dark: #000;
   --color-shadow: #333;
+  --color-in: #006699;
+  --color-twit: #1da1f2;
+  --color-face: #395185;
 
   /* values*/
   --pad-main: 50px;
   --marg-post: 5px;
   --post-width: 240px;
+  --logo-width: 40px;
+  --btn-width: 32px;
 }
 
 /* reset */
@@ -51,8 +56,8 @@ body {
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
+  width: var(--logo-width);
+  height: var(--logo-width);
   margin: 10px 15px 10px 11px;
   background-color: var(--color-white);
   border: 1px solid var(--color-white);
@@ -127,7 +132,7 @@ body {
   border-right: 1px solid var(--color-dark);
 }
 
-.nav-tabs__left li:first-child {
+.nav-tabs--selected {
   background-color: var(--color-bckg_tab_select);
 }
 
@@ -171,39 +176,83 @@ body {
   margin: 0 8px;
   cursor: default;
 }
-
-.post__footer button {
-  width: 32px;
-  height: 32px;
-  margin: 4px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  border: 1px solid var(--color-white);
+/**** post buttons ****/
+/* boutons en 3D avec une animation au click */
+.buttons {
+  display: flex;
   visibility: hidden;
 }
 
-.post__footer button:nth-child(1) {
-  background-image: url(../images/logo_in.svg);
-}
-
-.post__footer button:nth-child(2) {
-  background-image: url(../images/logo_bird.svg);
-}
-
-.post__footer button:nth-child(3) {
-  background-image: url(../images/logo_face.svg);
-}
-
-.post:hover button {
+.post:hover .buttons {
   visibility: visible;
 }
 
-button:active {
-  transform: scale(0.9, 0.9);
-  box-shadow: inset 1px 1px var(--color-shadow);
+.flip-btn {
+  margin: 4px;
+  width: var(--btn-width);
+  height: var(--btn-width);
+  background-color: transparent;
+  perspective: 100px;
+}
+.flip-btn__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
 }
 
+.btn--front,
+.btn--back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-white);
+  backface-visibility: hidden;
+}
+
+.btn--back {
+  transform: rotateX(180deg);
+}
+
+.post__footer .flip-btn:nth-child(1) > .flip-btn__inner .btn--front {
+  background-image: url(../images/logo_in.svg);
+}
+.post__footer .flip-btn:nth-child(1) > .flip-btn__inner .btn--back {
+  background-color: var(--color-in);
+}
+
+.post__footer .flip-btn:nth-child(2) > .flip-btn__inner .btn--front {
+  background-image: url(../images/logo_bird.svg);
+}
+.post__footer .flip-btn:nth-child(2) > .flip-btn__inner .btn--back {
+  background-color: var(--color-twit);
+}
+
+.post__footer .flip-btn:nth-child(3) > .flip-btn__inner .btn--front {
+  background-image: url(../images/logo_face.svg);
+}
+.post__footer .flip-btn:nth-child(3) > .flip-btn__inner .btn--back {
+  background-color: var(--color-face);
+}
+
+/* animations */
+.flip-btn:active .flip-btn__inner {
+  animation: 0.5s linear rot;
+  animation-play-state: running;
+}
+
+@keyframes rot {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
+}
 /****************** mobile *******************/
 @media screen and (max-width: 1070px) {
   .wrapper {
@@ -245,9 +294,8 @@ button:active {
   }
 
   .main {
-    padding: 0;
+    padding: 0px;
     padding-bottom: 1em;
-    width: 100%;
     background-color: var(--color-white);
   }
 
